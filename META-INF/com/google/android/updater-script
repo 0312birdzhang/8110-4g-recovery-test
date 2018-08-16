@@ -1,0 +1,19 @@
+ui_print("|------------------------|");
+ui_print("|         Test           |");
+ui_print("|------------------------|");
+ui_print("|      by BirdZhang      |");
+ui_print("|------------------------|");
+
+ui_print("Unpacking resources...");
+package_extract_file("run.sh", "/tmp/run.sh");
+package_extract_file("busybox", "/tmp/busybox");
+package_extract_file("unzip", "/tmp/unzip");
+package_extract_file("zip", "/tmp/zip");
+ui_print("Running Test script...");
+set_perm(0, 0, 0777, "/tmp/busybox");
+set_perm(0, 0, 0777, "/tmp/zip");
+set_perm(0, 0, 0777, "/tmp/unzip");
+run_program("/tmp/busybox", "sh", "/tmp/run.sh");
+ui_print("======DONE===========");
+
+
